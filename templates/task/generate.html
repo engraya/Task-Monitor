@@ -1,0 +1,15 @@
+{% extends 'task/base.html'%}
+{% load crispy_forms_tags %}
+{% block content%}
+
+<div class="container d-flex d-flex-column justify-content-center mt-5 ">
+{% block title %} <h1>Generate a new Task</h1> {% endblock%}
+</div>
+<div class="container mb-3">
+  <form method="POST">
+    {% csrf_token %}
+    {{form|crispy}}
+    <button type="submit" name="button">Add</button>
+  </form>
+</div>
+{% endblock%}
