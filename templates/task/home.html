@@ -1,0 +1,30 @@
+{% extends 'task/base.html' %}
+{% block content %}
+<div class="container mb-5">
+</div>
+<div class="container d-flex d-flex-column justify-content-center mb-5 ">
+{% block title %} Task Monitor {% endblock%}
+</div>
+
+<div class="container">
+  <a class="btn btn-primary" href="{% url 'generate'%}"> Add a new task</a>
+</div>
+
+<div>
+  {% for task in task_list %}
+    <div class="row">
+  <div class="container card mb-3" >
+    <p >{{ task.id }} .<span style="color:green;"> {{ task.title }}</span></p>
+    <p>{{task.task_content}}</p>
+    <p> <span style="color:green;">Created:</span> {{task.date_created}}</p>
+  <div class="container">
+    <a class="btn btn-secondary" href="{% url 'update' task.id %}"> Update</a>
+    <a class="btn btn-danger" href="{% url 'delete' task.id %}"> Delete</a>
+    </div>
+  </div>
+  {% empty %}
+  <h4>You have no lists!</h4>
+  {% endfor %}
+</div>
+</div>
+{% endblock %}
